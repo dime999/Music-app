@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MusicApp;
 
 namespace MusicApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220209191335_ss")]
+    partial class ss
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,6 +76,21 @@ namespace MusicApp.Migrations
                     b.ToTable("Pjesme");
                 });
 
+            modelBuilder.Entity("MusicApp.Entiteti.PjesmaKategorija", b =>
+                {
+                    b.Property<int>("PjesmaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("KategorijaId")
+                        .HasColumnType("int");
+
+                    b.HasKey("PjesmaId", "KategorijaId");
+
+                    b.HasIndex("KategorijaId");
+
+                    b.ToTable("PjesmaKategorije");
+                });
+
             modelBuilder.Entity("MusicApp.Entiteti.Pjesma", b =>
                 {
                     b.HasOne("MusicApp.Entiteti.Kategorija", "kategorija")
@@ -81,6 +98,25 @@ namespace MusicApp.Migrations
                         .HasForeignKey("kategorija_id");
 
                     b.Navigation("kategorija");
+                });
+
+            modelBuilder.Entity("MusicApp.Entiteti.PjesmaKategorija", b =>
+                {
+                    b.HasOne("MusicApp.Entiteti.Kategorija", "Kategorija")
+                        .WithMany()
+                        .HasForeignKey("KategorijaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MusicApp.Entiteti.Pjesma", "Pjesma")
+                        .WithMany()
+                        .HasForeignKey("PjesmaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Kategorija");
+
+                    b.Navigation("Pjesma");
                 });
 #pragma warning restore 612, 618
         }

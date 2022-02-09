@@ -11,6 +11,6 @@ namespace MusicApp.Entiteti
         [Key]
         public int id { get; set; }
         public string ime { get; set; }
-        public List<PjesmaKategorija> PjesmaKategorija { get; set; }
+       // public List<PjesmaKategorija> PjesmaKategorija { get; set; }
     }
 }

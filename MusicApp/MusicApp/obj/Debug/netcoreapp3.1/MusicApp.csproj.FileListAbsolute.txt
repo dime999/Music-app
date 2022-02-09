@@ -141,3 +141,5 @@ C:\Users\adem_\Documents\GitHub\Music-app\MusicApp\MusicApp\obj\Debug\netcoreapp
 C:\Users\adem_\Documents\GitHub\Music-app\MusicApp\MusicApp\obj\Debug\netcoreapp3.1\MusicApp.dll
 C:\Users\adem_\Documents\GitHub\Music-app\MusicApp\MusicApp\obj\Debug\netcoreapp3.1\MusicApp.pdb
 C:\Users\adem_\Documents\GitHub\Music-app\MusicApp\MusicApp\obj\Debug\netcoreapp3.1\MusicApp.genruntimeconfig.cache
+C:\Users\adem_\Documents\GitHub\Music-app\MusicApp\MusicApp\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\adem_\Documents\GitHub\Music-app\MusicApp\MusicApp\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

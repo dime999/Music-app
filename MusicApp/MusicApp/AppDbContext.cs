@@ -17,7 +17,7 @@ namespace MusicApp
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
-            modelBuilder.Entity<PjesmaKategorija>().HasKey(x => new { x.PjesmaId, x.KategorijaId });
+           // modelBuilder.Entity<PjesmaKategorija>().HasKey(x => new { x.PjesmaId, x.KategorijaId });
             
 
             base.OnModelCreating(modelBuilder);
@@ -25,6 +25,6 @@ namespace MusicApp
 
         public DbSet<Kategorija> Kategorije { get; set; }
         public DbSet<Pjesma> Pjesme { get; set; }
-        public DbSet<PjesmaKategorija> PjesmaKategorije { get; set; }
+        //public DbSet<PjesmaKategorija> PjesmaKategorije { get; set; }
     }
 }
