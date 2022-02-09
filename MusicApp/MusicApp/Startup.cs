@@ -62,6 +62,7 @@ namespace MusicApp
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
