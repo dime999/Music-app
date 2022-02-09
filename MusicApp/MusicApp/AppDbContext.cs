@@ -14,7 +14,17 @@ namespace MusicApp
         public AppDbContext([NotNullAttribute] DbContextOptions options) : base(options)
         {
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Entity<PjesmaKategorija>().HasKey(x => new { x.PjesmaId, x.KategorijaId });
+            
+
+            base.OnModelCreating(modelBuilder);
+        }
 
         public DbSet<Kategorija> Kategorije { get; set; }
+        public DbSet<Pjesma> Pjesme { get; set; }
+        public DbSet<PjesmaKategorija> PjesmaKategorije { get; set; }
     }
 }
