@@ -1,5 +1,5 @@
 <h1>Dodaj novu pjesmu</h1>
-<button mat-flat-button color="primary">Dodaj pjesmu</button>
+<button mat-flat-button color="primary" (click)="DodajNovi()">Dodaj pjesmu</button>
 
 
 <app-generic-list [list]="pjesma">
@@ -58,7 +58,7 @@
                 <th mat-header-cell *matHeaderCellDef>Opcije</th>
                 <td mat-cell *matCellDef="let element">
                     <a  mat-flat-button color="primary" (click)="uredi(element)">Uredi</a>
-                    <button mat-flat-button color="warn">
+                    <button mat-flat-button color="warn" (click)="obrisi(element.id)">
                         Obriši
                     </button>
                 </ng-container>
@@ -80,3 +80,4 @@
 </app-generic-list>
 
 <app-pjesma-edit [urediPjesmu]="urediPjesmu"></app-pjesma-edit>
+<app-pjesma-forma [dodajPjesmu]="dodajPjesmu"></app-pjesma-forma>

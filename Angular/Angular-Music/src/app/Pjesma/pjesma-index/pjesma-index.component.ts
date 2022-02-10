@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {  pjesmaDTO } from '../pjesma.model';
 import { PjesmaService } from '../pjesma.service';
 
@@ -12,7 +13,8 @@ export class PjesmaIndexComponent implements OnInit {
   pjesma:any;
   columnsToDisplay=['naziv','nazivIzvodjaca','url','ocjena','favorit','datumUnosaPjesme','datumEditovanja','kategorija','actions'];
   urediPjesmu:any=null;
-  constructor(private service: PjesmaService) { }
+  dodajPjesmu:any=null;
+  constructor(private service: PjesmaService,private router:Router) { }
 
   ngOnInit(): void {
     this.LoadData();
@@ -30,6 +32,20 @@ export class PjesmaIndexComponent implements OnInit {
     this.urediPjesmu=element;
     this.urediPjesmu.prikazi=true;
 
+  }
+  obrisi(id:number)
+  {
+    return this.service.delete(id).subscribe(()=>{
+     location.reload(); 
+    })
+  }
+  DodajNovi(){
+    this.dodajPjesmu = {
+      prikazi:true,
+      id:0,
+      nazivIzvodjaca :"",
+      url:""
+    }
   }
 
 }

@@ -33,4 +33,9 @@ export class PjesmaService {
   {
     return this.http.put((`${this.apiURL}/${id}`),urediPjesmu);
   }
+
+  delete(id:number)
+  {
+    return this.http.delete(`${this.apiURL}/${id}`);
+  }
 }

@@ -1,1 +1,36 @@
-<p>pjesma-forma works!</p>
+<div *ngIf="dodajPjesmu!=null && dodajPjesmu.prikazi" class="modal fade show" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel" aria-modal="true" role="dialog" style="display: block;">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLiveLabel">Dodaj pjesmu</h2>
+          <button type="button" class="btn-close" (click)="dodajPjesmu.prikazi = false" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="mb-3">
+                <label class="form-label">Ime pjesme</label>
+                <input class="form-control" [(ngModel)]="dodajPjesmu.naziv"  placeholder="Ime pjesme">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Ime izvođača</label>
+                <input class="form-control" [(ngModel)]="dodajPjesmu.nazivIzvodjaca"  placeholder="Ime izvođača">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Url</label>
+                <input class="form-control" [(ngModel)]="dodajPjesmu.url"  placeholder="Url">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Kategorija</label>
+                <select class="form-control" [(ngModel)]="dodajPjesmu.kategorija_id" >
+                  <option *ngFor="let x of kategorije" value="{{x.id}}">{{x.ime}}</option>
+                </select>
+              </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="dodajPjesmu.prikazi = false" >Close</button>
+          <button type="button" class="btn btn-primary" (click)="snimi()">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
