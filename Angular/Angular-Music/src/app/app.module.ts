@@ -19,7 +19,12 @@ import{MatSelectModule} from '@angular/material/select'
 
 import{HttpClientModule} from '@angular/common/http';
 import { GenericListComponent } from './Helpers/generic-list/generic-list.component';
-import{MatTableModule} from'@angular/material/table'
+import{MatTableModule} from'@angular/material/table';
+import { PjesmaIndexComponent } from './Pjesma/pjesma-index/pjesma-index.component';
+import { PjesmaEditComponent } from './Pjesma/pjesma-edit/pjesma-edit.component';
+import { PjesmaFormaComponent } from './Pjesma/pjesma-forma/pjesma-forma.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -30,7 +35,10 @@ import{MatTableModule} from'@angular/material/table'
     KategorijaIndexComponent,
     KategorijaFormaComponent,
     KategorijaNovaComponent,
-    GenericListComponent
+    GenericListComponent,
+    PjesmaIndexComponent,
+    PjesmaEditComponent,
+    PjesmaFormaComponent
     
   ],
   imports: [
@@ -45,7 +53,9 @@ import{MatTableModule} from'@angular/material/table'
     MatInputModule,
     MatSelectModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    NgbModule,
+    FormsModule
     
   ],
   providers: [],

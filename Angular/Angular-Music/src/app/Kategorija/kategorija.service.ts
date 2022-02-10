@@ -21,8 +21,8 @@ export class KategorijaService {
 
 
 
-  create(zanr: kategorijaCreationDTO){
-    return this.http.post(this.apiURL,zanr)
+  create(kategorija: kategorijaCreationDTO){
+    return this.http.post(this.apiURL,kategorija)
   }
 
 }

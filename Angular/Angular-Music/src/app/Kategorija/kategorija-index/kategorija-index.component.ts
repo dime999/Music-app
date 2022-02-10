@@ -10,7 +10,7 @@ import { KategorijaService } from '../kategorija.service';
 export class KategorijaIndexComponent implements OnInit {
 
   kategorija: KategorijaDTO[]=[];
-  columnsToDisplay=['ime'];
+  columnsToDisplay=['id','ime'];
 
   constructor(private service:KategorijaService) { }
 

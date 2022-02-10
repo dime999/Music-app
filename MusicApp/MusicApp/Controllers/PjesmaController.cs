@@ -30,6 +30,7 @@ namespace MusicApp.Controllers
         public ActionResult<List<Pjesma>> GetAll()
         {
             var data = context.Pjesme
+                .Include(p=> p.kategorija)
                 .OrderByDescending(s => s.id)
                 .AsQueryable();
 
@@ -46,32 +47,41 @@ namespace MusicApp.Controllers
 
 
         [HttpPost]
-       public ActionResult Update(int id,[FromBody] PjesmaCreationVM x)
+        public ActionResult<Pjesma> Add([FromBody] PjesmaCreationVM x)
+        {
+            var pjesma = new Pjesma
+            {
+                Naziv = x.Naziv,
+                NazivIzvodjaca = x.NazivIzvodjaca,
+                Url = x.Url,
+                Ocjena = x.Ocjena,
+                Favorit = x.Favorit,
+                DatumUnosaPjesme = DateTime.Now,
+                kategorija_id = x.Kategorija_id
+            };
+            context.Add(pjesma);
+            context.SaveChanges();
+            return pjesma;
+            
+        }
+        [HttpPut("{id}")]
+        public ActionResult<Pjesma> Put(int id,[FromBody] PjesmaCreationVM x)
         {
             Pjesma pjesma;
-
-            if(id==0)
+            pjesma = context.Pjesme.Include(p => p.kategorija).FirstOrDefault(p => p.id == id);
+            if(pjesma==null)
             {
-                pjesma = new Pjesma { DatumUnosaPjesme = DateTime.Now };
-                context.Add(pjesma);
+                return BadRequest("Pogresan ID");
             }
-            else
-            {
-                pjesma = context.Pjesme.Include(p => p.kategorija).FirstOrDefault(p => p.id == id);
-                if(pjesma==null)
-                {
-                    return BadRequest("pogresan ID");
-                }
-            }
-
             pjesma.Naziv = x.Naziv;
-            pjesma.Ocjena = x.Ocjena;
-            pjesma.DatumEditovanja = DateTime.Now;
             pjesma.NazivIzvodjaca = x.NazivIzvodjaca;
-            pjesma.kategorija_id = x.kategorija_id;
+            pjesma.Url = x.Url;
+            pjesma.kategorija_id = x.Kategorija_id;
             context.SaveChanges();
             return Get(pjesma.id);
+
         }
+
 
 
         [HttpPost("{id}")]
