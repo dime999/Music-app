@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -20,6 +20,8 @@ export class PjesmaService {
     return this.http.get<pjesmaDTO[]>(this.apiURL);
   }
 
+  
+
  getById(id:number):Observable<pjesmaDTO>
  {
    return this.http.get<pjesmaDTO>(`${this.apiURL}/${id}`);
@@ -39,6 +41,10 @@ export class PjesmaService {
   delete(id:number)
   {
     return this.http.delete(`${this.apiURL}/${id}`);
+  }
+  public filter(value:any): Observable<pjesmaDTO[]>{
+    const params = new HttpParams({fromObject:value});
+    return this.http.get<pjesmaDTO[]>(`${this.apiURL}/filter`);
   }
 
   

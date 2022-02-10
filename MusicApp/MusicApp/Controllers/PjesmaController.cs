@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using MusicApp.ViewModels;
 
 namespace MusicApp.Controllers
 {
@@ -27,15 +28,28 @@ namespace MusicApp.Controllers
         }
 
         [HttpGet]
-        public ActionResult<List<Pjesma>> GetAll()
+        public ActionResult<List<Pjesma>> GetAll(string ime)
         {
             var data = context.Pjesme
                 .Include(p=> p.kategorija)
+                .Where(x=>ime==null || (x.Naziv).StartsWith(ime) || (x.NazivIzvodjaca).StartsWith(ime))
                 .OrderByDescending(s => s.id)
                 .AsQueryable();
 
             return data.Take(10).ToList();
                 
+        }
+
+        [HttpGet("filter")]
+        public  ActionResult<List<Pjesma>> Filter([FromQuery] FilterPjesmaVM x)
+        {
+            var pjesmaQ = context.Pjesme.AsQueryable();
+            if(!string.IsNullOrEmpty(x.Naziv))
+            {
+                pjesmaQ = pjesmaQ.Where(p => p.Naziv.Contains(x.Naziv));
+            }
+            var pjesma = pjesmaQ.OrderBy(x => x.Naziv).ToList();
+            return pjesma;
         }
         [HttpGet("{id}")]
         public ActionResult Get(int id)
@@ -66,19 +80,7 @@ namespace MusicApp.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult<Pjesma> Post([FromBody] PjesmaCreationVM x)
-        //{
-        //    Pjesma pjesma = new Pjesma { DatumUnosaPjesme = DateTime.Now };
-        //    pjesma.Naziv = x.Naziv;
-        //    pjesma.NazivIzvodjaca = x.NazivIzvodjaca;
-        //    pjesma.Url = x.Url;
-        //    pjesma.kategorija_id = x.Kategorija_id;
-        //    context.Add(pjesma);
-        //    context.SaveChanges();
-        //    return pjesma;
-
-        //}
+        
         [HttpPut("{id}")]
         public ActionResult<Pjesma> Put(int id,[FromBody] PjesmaCreationVM x)
         {
@@ -103,6 +105,7 @@ namespace MusicApp.Controllers
             pjesma.NazivIzvodjaca = x.NazivIzvodjaca;
             pjesma.Url = x.Url;
             pjesma.kategorija_id = x.Kategorija_id;
+            pjesma.DatumEditovanja = DateTime.Now;
             context.SaveChanges();
             return Get(pjesma.id);
 
@@ -110,21 +113,7 @@ namespace MusicApp.Controllers
 
 
 
-        //[HttpPost("{id}")]
-        //public ActionResult Delete(int id)
-        //{
-           
-
-        //    Pjesma pjesma = context.Pjesme.Find(id);
-
-        //    if (pjesma == null)
-        //        return BadRequest("pogresan ID");
-
-        //    context.Remove(pjesma);
-
-        //    context.SaveChanges();
-        //    return Ok(pjesma);
-        //}
+       
 
 
         [HttpDelete("{id:int}")]

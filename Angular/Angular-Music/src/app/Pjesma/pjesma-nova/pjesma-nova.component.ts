@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { pjesmaCreationDTO } from '../pjesma.model';
 import { PjesmaService } from '../pjesma.service';
 
@@ -9,7 +10,7 @@ import { PjesmaService } from '../pjesma.service';
 })
 export class PjesmaNovaComponent implements OnInit {
 
-  constructor(private servis:PjesmaService) { }
+  constructor(private servis:PjesmaService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -17,7 +18,7 @@ export class PjesmaNovaComponent implements OnInit {
   {
     console.log(pjesma);
     this.servis.create(pjesma).subscribe(() => {
-      
+      this.router.navigate(['/pjesma']);
     });
   }
 

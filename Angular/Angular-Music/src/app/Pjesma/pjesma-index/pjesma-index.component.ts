@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MojConfig } from 'src/app/moj-config';
 import {  pjesmaDTO } from '../pjesma.model';
 import { PjesmaService } from '../pjesma.service';
 
@@ -11,21 +13,31 @@ import { PjesmaService } from '../pjesma.service';
 export class PjesmaIndexComponent implements OnInit {
 
   pjesma:any;
+  ime:string='';
   columnsToDisplay=['naziv','nazivIzvodjaca','url','ocjena','favorit','datumUnosaPjesme','datumEditovanja','kategorija','actions'];
   urediPjesmu:any=null;
   dodajPjesmu:any=null;
-  constructor(private service: PjesmaService,private router:Router) { }
+  constructor(private service: PjesmaService,private router:Router,private Klijent: HttpClient) { }
 
   ngOnInit(): void {
     this.LoadData();
   }
 
+  
   LoadData()
   {
     this.service.getAll().subscribe(x=>{
       this.pjesma=x;
     });
+    
   }
+  play1()
+  {
+    
+  }
+
+
+
 
   uredi(element:any)
   {

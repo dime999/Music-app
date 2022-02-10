@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { KategorijaService } from 'src/app/Kategorija/kategorija.service';
 import { MojConfig } from 'src/app/moj-config';
 import { pjesmaCreationDTO } from '../pjesma.model';

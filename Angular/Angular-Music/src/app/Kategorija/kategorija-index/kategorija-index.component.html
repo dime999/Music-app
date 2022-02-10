@@ -12,6 +12,11 @@
 
     <ng-container content>
         <table mat-table [dataSource]="kategorija" class="mat-elevation-z8 table-index">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef>Ime</th>
+                <td mat-cell *matCellDef="let element">{{element.id}}</td>
+
+            </ng-container>
             <ng-container matColumnDef="ime">
                 <th mat-header-cell *matHeaderCellDef>Ime</th>
                 <td mat-cell *matCellDef="let element">{{element.ime}}</td>
