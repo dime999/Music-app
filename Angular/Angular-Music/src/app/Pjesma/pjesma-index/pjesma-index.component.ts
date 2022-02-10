@@ -42,9 +42,9 @@ export class PjesmaIndexComponent implements OnInit {
     this.urediPjesmu.prikazi=true;
 
   }
-  obrisi(id:number)
+  obrisi(s:any)
   {
-    return this.service.delete(id).subscribe(()=>{
+    return this.service.delete(s.id).subscribe(()=>{
      location.reload(); 
     })
   }
@@ -62,6 +62,13 @@ export class PjesmaIndexComponent implements OnInit {
       kategorija_id:"0"
      
     }
+  }
+  GetPodaci()
+  {
+    if(this.pjesma==null)
+    return[];
+    return this.pjesma.filter((x: any)=> x.naziv.length==0 || (x.naziv).toLowerCase().startsWith(this.ime.toLowerCase()) || (x.nazivIzvodjaca).toLowerCase().startsWith(this.ime.toLowerCase()));
+
   }
 
 }

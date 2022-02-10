@@ -16,9 +16,15 @@ table.mat-table {
   
 width: 160%;
 }
+.dugme{
+  position: relative;
+  left: 15rem;
+  bottom: 2.8rem;
+}
 
-
-
+#tt{
+  width: 130%;
+}
 
 
 html {
