@@ -43,8 +43,15 @@ export class PjesmaIndexComponent implements OnInit {
     this.dodajPjesmu = {
       prikazi:true,
       id:0,
+      naziv:"",
       nazivIzvodjaca :"",
-      url:""
+      url:"",
+      ocjena:1,
+      favorit:true,
+      datumUnosaPjesme:"2003-10-01",
+      datumEditovanja:"2003-10-01",
+      kategorija_id:"0"
+     
     }
   }
 

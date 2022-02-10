@@ -1,5 +1,5 @@
 <h1>Dodaj novu pjesmu</h1>
-<button mat-flat-button color="primary" (click)="DodajNovi()">Dodaj pjesmu</button>
+<button mat-flat-button color="primary" routerLink="/pjesma/nova">Dodaj pjesmu</button>
 
 
 <app-generic-list [list]="pjesma">
@@ -80,4 +80,4 @@
 </app-generic-list>
 
 <app-pjesma-edit [urediPjesmu]="urediPjesmu"></app-pjesma-edit>
-<app-pjesma-forma [dodajPjesmu]="dodajPjesmu"></app-pjesma-forma>
+

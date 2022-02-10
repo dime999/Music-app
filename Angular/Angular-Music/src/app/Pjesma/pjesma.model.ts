@@ -3,14 +3,14 @@ import { KategorijaDTO } from "../Kategorija/kategorija.model";
 
 export interface pjesmaCreationDTO{
    
-    Naziv: string;
-    NazivIzvodjaca:string;
-    Url:string;
-    Ocjena:number;
-    Favorit:boolean;
-    DatumUnosaPjesme:Date;
-    DatumEditovanja:Date;
-    Kategorija: number[];
+    naziv: string;
+    nazivIzvodjaca:string;
+    url:string;
+    ocjena:number;
+    favorit:boolean;
+    datumUnosaPjesme:Date;
+    datumEditovanja:Date;
+    kategorija_id: number;
 
 }
 
@@ -23,5 +23,5 @@ export interface pjesmaDTO{
     Favorit:boolean;
     DatumUnosaPjesme:Date;
     DatumEditovanja:Date;
-    Kategorija: KategorijaDTO[];
+    Kategorija: KategorijaDTO;
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { formatDateFormData } from '../utils';
 import { pjesmaCreationDTO, pjesmaDTO } from './pjesma.model';
 
 @Injectable({
@@ -25,8 +26,9 @@ export class PjesmaService {
  }
 
 
-  create(pjesma: pjesmaCreationDTO){
-    return this.http.post(this.apiURL,pjesma)
+  create(pjesma:pjesmaCreationDTO){
+    const formData=this.BuildFormData(pjesma);
+    return this.http.post(this.apiURL,pjesma);
   }
 
   edit(id:number,urediPjesmu:any)
@@ -38,4 +40,34 @@ export class PjesmaService {
   {
     return this.http.delete(`${this.apiURL}/${id}`);
   }
+
+  
+
+  private BuildFormData(pjesma: pjesmaCreationDTO) : FormData
+  {
+
+    const formData=new FormData();
+    formData.append('naziv',pjesma.naziv);
+    formData.append('nazivIzvodjaca',pjesma.nazivIzvodjaca);
+    formData.append('url',pjesma.url);
+    formData.append('ocjena',String(pjesma.ocjena));
+    formData.append('favorit',String(pjesma.favorit));
+     if(pjesma.datumUnosaPjesme)
+    {
+      formData.append('datumUnosaPjesme',formatDateFormData(pjesma.datumUnosaPjesme));
+    }
+    if(pjesma.datumEditovanja)
+    {
+      formData.append('datumEditovanja',formatDateFormData(pjesma.datumEditovanja));
+    }
+    formData.append('kategorija_id', String(pjesma.kategorija_id));
+    
+
+    
+
+    return formData;
+  }
+
+
+
 }

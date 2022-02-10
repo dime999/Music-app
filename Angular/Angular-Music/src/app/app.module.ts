@@ -25,6 +25,11 @@ import { PjesmaEditComponent } from './Pjesma/pjesma-edit/pjesma-edit.component'
 import { PjesmaFormaComponent } from './Pjesma/pjesma-forma/pjesma-forma.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
 import { FormsModule } from '@angular/forms';
+import { PjesmaNovaComponent } from './Pjesma/pjesma-nova/pjesma-nova.component';
+import { MatPseudoCheckboxModule } from '@angular/material/core';
+import{MatDatepickerModule} from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 
 
@@ -38,7 +43,8 @@ import { FormsModule } from '@angular/forms';
     GenericListComponent,
     PjesmaIndexComponent,
     PjesmaEditComponent,
-    PjesmaFormaComponent
+    PjesmaFormaComponent,
+    PjesmaNovaComponent
     
   ],
   imports: [
@@ -55,7 +61,10 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     MatTableModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    MatPseudoCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
     
   ],
   providers: [],

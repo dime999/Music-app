@@ -46,47 +46,58 @@ namespace MusicApp.Controllers
         }
 
 
-        //[HttpPost]
-        //public ActionResult<Pjesma> Post([FromBody] PjesmaCreationVM x)
-        //{
-        //    var pjesma = new Pjesma
-        //    {
-        //        Naziv = x.Naziv,
-        //        NazivIzvodjaca = x.NazivIzvodjaca,
-        //        Url = x.Url,
-        //        Ocjena = x.Ocjena,
-        //        Favorit = x.Favorit,
-        //        DatumUnosaPjesme = DateTime.Now,
-        //        kategorija_id = x.Kategorija_id
-        //    };
-        //    context.Add(pjesma);
-        //    context.SaveChanges();
-        //    return pjesma;
-            
-        //}
-
-
         [HttpPost]
         public ActionResult<Pjesma> Post([FromBody] PjesmaCreationVM x)
         {
-            Pjesma pjesma = new Pjesma { DatumUnosaPjesme = DateTime.Now };
-            pjesma.Naziv = x.Naziv;
-            pjesma.NazivIzvodjaca = x.NazivIzvodjaca;
-            pjesma.Url = x.Url;
-            pjesma.kategorija_id = x.Kategorija_id;
+            var pjesma = new Pjesma
+            {
+                Naziv = x.Naziv,
+                NazivIzvodjaca = x.NazivIzvodjaca,
+                Url = x.Url,
+                Ocjena = x.Ocjena,
+                Favorit = x.Favorit,
+                DatumUnosaPjesme = DateTime.Now,
+                kategorija_id = x.Kategorija_id
+            };
             context.Add(pjesma);
             context.SaveChanges();
             return pjesma;
 
         }
+
+
+        //[HttpPost]
+        //public ActionResult<Pjesma> Post([FromBody] PjesmaCreationVM x)
+        //{
+        //    Pjesma pjesma = new Pjesma { DatumUnosaPjesme = DateTime.Now };
+        //    pjesma.Naziv = x.Naziv;
+        //    pjesma.NazivIzvodjaca = x.NazivIzvodjaca;
+        //    pjesma.Url = x.Url;
+        //    pjesma.kategorija_id = x.Kategorija_id;
+        //    context.Add(pjesma);
+        //    context.SaveChanges();
+        //    return pjesma;
+
+        //}
         [HttpPut("{id}")]
         public ActionResult<Pjesma> Put(int id,[FromBody] PjesmaCreationVM x)
         {
             Pjesma pjesma;
-            pjesma = context.Pjesme.Include(p => p.kategorija).FirstOrDefault(p => p.id == id);
-            if(pjesma==null)
+            if (id == 0)
             {
-                return BadRequest("Pogresan ID");
+                pjesma = new Pjesma
+                {
+                    DatumUnosaPjesme = DateTime.Now
+                };
+                context.Add(pjesma);
+            }
+            else
+            {
+                pjesma = context.Pjesme.Include(p => p.kategorija).FirstOrDefault(p => p.id == id);
+                if (pjesma == null)
+                {
+                    return BadRequest("Pogresan ID");
+                }
             }
             pjesma.Naziv = x.Naziv;
             pjesma.NazivIzvodjaca = x.NazivIzvodjaca;

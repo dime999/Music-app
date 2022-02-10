@@ -27,8 +27,10 @@ export class PjesmaEditComponent implements OnInit {
   }
 
   snimi(){
+    console.log(this.urediPjesmu);
   this.servicecPjesma.edit(this.urediPjesmu.id,this.urediPjesmu).subscribe(()=>{
     this.urediPjesmu.prikazi=false;
+    
   })
 
   }
