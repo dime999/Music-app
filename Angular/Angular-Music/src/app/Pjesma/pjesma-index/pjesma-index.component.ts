@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MojConfig } from 'src/app/moj-config';
-import {  pjesmaDTO } from '../pjesma.model';
+import {  pjesmaCreationDTO, pjesmaDTO } from '../pjesma.model';
 import { PjesmaService } from '../pjesma.service';
 
 @Component({
@@ -31,10 +31,7 @@ export class PjesmaIndexComponent implements OnInit {
     });
     
   }
-  play1()
-  {
-    
-  }
+  
 
 
 

@@ -11,6 +11,7 @@ export interface pjesmaCreationDTO{
     datumUnosaPjesme:Date;
     datumEditovanja:Date;
     kategorija_id: number;
+    
 
 }
 
@@ -23,5 +24,5 @@ export interface pjesmaDTO{
     Favorit:boolean;
     DatumUnosaPjesme:Date;
     DatumEditovanja:Date;
-    Kategorija: KategorijaDTO;
+    kategorija_id: number;
 }

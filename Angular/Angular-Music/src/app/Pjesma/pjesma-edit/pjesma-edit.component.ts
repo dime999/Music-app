@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { KategorijaFormaComponent } from 'src/app/Kategorija/kategorija-forma/kategorija-forma.component';
 import { KategorijaService } from 'src/app/Kategorija/kategorija.service';
 import { MojConfig } from 'src/app/moj-config';
+import { pjesmaCreationDTO } from '../pjesma.model';
 import { PjesmaService } from '../pjesma.service';
 
 @Component({

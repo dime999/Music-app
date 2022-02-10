@@ -18,7 +18,8 @@ namespace MusicApp.CreateModels
         public bool Favorit { get; set; }
         public DateTime DatumUnosaPjesme { get; set; }
         public DateTime? DatumEditovanja { get; set; }
-        public int? Kategorija_id { get; set; }
+        public int Kategorija_id { get; set; }
+      
 
 
     }

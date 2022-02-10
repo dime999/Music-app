@@ -104,7 +104,7 @@ namespace MusicApp.Controllers
             pjesma.Naziv = x.Naziv;
             pjesma.NazivIzvodjaca = x.NazivIzvodjaca;
             pjesma.Url = x.Url;
-            pjesma.kategorija_id = x.Kategorija_id;
+            pjesma.kategorija_id= x.Kategorija_id;
             pjesma.DatumEditovanja = DateTime.Now;
             context.SaveChanges();
             return Get(pjesma.id);
