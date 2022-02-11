@@ -29,8 +29,8 @@
      <td><a href="{{s.url}}" target="_blank"><mat-icon>play_circle_outline</mat-icon></a></td>
      <td>{{s.ocjena}}</td>
      <td>{{s.favorit}}</td>
-     <td>{{s.datumUnosaPjesme | date:'yyyy.mm.dd'}}</td>
-     <td>{{s.datumEditovanja | date:'yyyy.mm.dd'}}</td>
+     <td>{{s.datumUnosaPjesme | date:'shortDate'}}</td>
+     <td>{{s.datumEditovanja | date:'shortDate'}}</td>
      <td>{{s.kategorija!=null?s.kategorija.ime:""}}</td>
      
       <td>
